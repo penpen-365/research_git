@@ -1,4 +1,1 @@
 test
-hotfixの変更
-developの変更
-マージ後のhotfixによる変更
