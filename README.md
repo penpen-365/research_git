@@ -24,7 +24,7 @@ a --- b(hotfix) --- c(誤:developブランチをpull) --- d(hotfixの追加修�
 ＜調査1＞
 コミットハッシュ地点で巻き戻し用ブランチを切って、空コミットでPRを立ててmainへマージ。
 ```
-$ git checkout -b {ブランチ名} {コミットハッシュ値}
+$ git checkout -b rollback_branch {コミットハッシュ値}
 $ git commit --allow-empty -m "巻き戻しPR"
 ```
 結果は、失敗。巻き戻らず差分なしのコミットとして記録された。
@@ -32,6 +32,7 @@ $ git commit --allow-empty -m "巻き戻しPR"
 
 ＜調査2＞mainブランチのHEADからブランチを切って、git reset --hardしてから、空コミットでPRを立ててmainへマージ。
 ```
+$ git checkout rollback_branch
 $ git reset --hard {コミットハッシュ値}
 $ git commit --allow-empty -m "巻き戻しPR"
 ```
